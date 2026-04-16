@@ -1,0 +1,90 @@
+[
+  {
+    "id": "fore_001",
+    "title": "Update the H2 Revenue Forecast",
+    "context": "H1 is closed. Actuals came in ahead of budget. You need to update the H2 revenue forecast and explain your assumptions to the CFO.",
+    "financial_data": {
+      "type": "table",
+      "title": "Nexova Ltd — Revenue Forecast (€ thousands)",
+      "columns": ["Quarter", "Original Budget (€k)", "Actuals / Forecast (€k)"],
+      "rows": [
+        ["Q1 (Actual)", 945, 1050],
+        ["Q2 (Actual)", 1155, 1155],
+        ["Q3 (Forecast)", 1050, "?"],
+        ["Q4 (Forecast)", 1050, "?"],
+        ["Full Year", 4200, "?"]
+      ]
+    },
+    "answer_type": "hybrid",
+    "number_fields": [
+      {"id": "q3_forecast", "label": "Q3 Revised Forecast (€k)", "correct_answer": 1100, "tolerance_pct": 5},
+      {"id": "q4_forecast", "label": "Q4 Revised Forecast (€k)", "correct_answer": 1100, "tolerance_pct": 5},
+      {"id": "fy_forecast", "label": "Full Year Revised Forecast (€k)", "correct_answer": 4305, "tolerance_pct": 3}
+    ],
+    "prompt": "In 2–3 sentences, explain the rationale behind your updated H2 forecast to the CFO.",
+    "rubric": [
+      "References the H1 outperformance as the basis for the revision",
+      "Applies a reasonable and consistent logic to H2 (not just copying H1 beat)",
+      "Acknowledges any uncertainty or risk in the forecast"
+    ],
+    "model_answer": "H1 came in €105,000 ahead of budget, with Q1 outperforming by €105,000 and Q2 on-plan. Given a healthy sales pipeline and no known headwinds, we are revising Q3 and Q4 forecasts up by €50,000 each — a conservative approach that reflects momentum without over-committing. The primary risk is enterprise deal slippage, which we will track weekly."
+  },
+  {
+    "id": "fore_002",
+    "title": "Reforecast OpEx After Headcount Changes",
+    "context": "Two new analysts join in August. One accountant resigns effective end of September. Update the H2 monthly OpEx forecast and explain the impact.",
+    "financial_data": {
+      "type": "table",
+      "title": "H2 OpEx Forecast (€ thousands) — Before Changes",
+      "columns": ["Month", "Current Forecast (€k)"],
+      "rows": [
+        ["July", 150],
+        ["August", 150],
+        ["September", 150],
+        ["October", 150],
+        ["November", 150],
+        ["December", 150],
+        ["H2 Total", 900]
+      ]
+    },
+    "answer_type": "hybrid",
+    "number_fields": [
+      {"id": "new_hire_cost", "label": "Additional cost from 2 new hires Aug–Dec (€k, combined)", "correct_answer": 45, "tolerance_pct": 10},
+      {"id": "resignation_saving", "label": "Saving from resignation Oct–Dec (€k)", "correct_answer": 16, "tolerance_pct": 10},
+      {"id": "revised_h2_total", "label": "Revised H2 OpEx Total (€k)", "correct_answer": 929, "tolerance_pct": 2}
+    ],
+    "prompt": "In 2–3 sentences, summarise the net impact of these headcount changes on H2 OpEx for the CFO. New hires: €9,000/month combined (on-costs included). Resignation saves: €5,500/month from October.",
+    "rubric": [
+      "Quantifies the net cost impact (approximately €29,000 net increase)",
+      "Distinguishes between the additional cost (new hires) and the saving (resignation)",
+      "States the revised H2 total or net change clearly"
+    ],
+    "model_answer": "The two new analyst hires add €9,000/month in combined on-cost from August, totalling €45,000 for the remaining 5 months of H2. The accountant resignation saves €5,500/month from October, reducing costs by €16,500 over 3 months — a net H2 increase of €28,500. The revised H2 OpEx forecast is therefore €928,500, up from the original €900,000."
+  },
+  {
+    "id": "fore_003",
+    "title": "Year-End Forecast Memo",
+    "context": "It's October. With Q3 actuals in hand, write the year-end forecast memo that will go to the board. All numbers are provided — your job is the narrative.",
+    "financial_data": {
+      "type": "table",
+      "title": "Nexova Ltd — Year-End Forecast (€ thousands)",
+      "columns": ["", "Original Budget", "Q1–Q3 Actual", "Q4 Forecast", "Full Year Forecast", "vs Budget"],
+      "rows": [
+        ["Revenue", 4200, 3303, 1100, 4403, "+203"],
+        ["Gross Profit", 2940, 2355, 770, 3125, "+185"],
+        ["Total OpEx", 1890, 1490, 480, 1970, "-80"],
+        ["EBIT", 1050, 865, 290, 1155, "+105"]
+      ]
+    },
+    "answer_type": "text",
+    "prompt": "Write a professional year-end forecast memo (3–4 sentences) for the board. Cover the expected full-year outcome vs budget, the key drivers, and any risks to the Q4 forecast.",
+    "rubric": [
+      "States the full-year EBIT forecast and the expected beat vs budget",
+      "Explains at least one revenue driver for outperformance",
+      "Mentions OpEx being over budget and why",
+      "Identifies at least one Q4 risk",
+      "Professional, board-ready tone"
+    ],
+    "model_answer": "Nexova is tracking to deliver full-year EBIT of €1,155,000 — €105,000 (10%) ahead of the original budget of €1,050,000. Revenue outperformance of €203,000 is the primary driver, reflecting strong enterprise deal conversion in Q2 and Q3. OpEx is forecast to exceed budget by €80,000, largely due to the two analyst hires in August and unplanned marketing spend in Q3. The key risk to Q4 is the €1.1M revenue forecast, which assumes two enterprise deals close before year-end; any slippage would reduce full-year EBIT by approximately €50,000–70,000."
+  }
+]

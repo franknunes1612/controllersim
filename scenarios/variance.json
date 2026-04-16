@@ -1,0 +1,81 @@
+[
+  {
+    "id": "var_001",
+    "title": "Q2 Marketing Overspend",
+    "context": "The CFO has asked you to explain last quarter's marketing spend. Budget was €50,000. Actuals came in at €63,500. Two unplanned digital campaigns were approved mid-quarter by the CMO.",
+    "financial_data": {
+      "type": "table",
+      "title": "Q2 Marketing — Budget vs Actual (€)",
+      "columns": ["", "Budget (€)", "Actual (€)", "Variance (€)"],
+      "rows": [
+        ["Digital Campaigns", 24000, 37500, -13500],
+        ["Events", 14000, 14000, 0],
+        ["Software Tools", 8000, 8000, 0],
+        ["Travel", 4000, 4000, 0],
+        ["Total", 50000, 63500, -13500]
+      ]
+    },
+    "answer_type": "text",
+    "prompt": "In 2–3 sentences, explain the Q2 marketing variance to the CFO. Your explanation should be professional and ready to present.",
+    "rubric": [
+      "Identifies the variance as unfavourable",
+      "Quantifies the gap in absolute terms (€13,500) or percentage terms (+27%)",
+      "Explains the cause (two unplanned digital campaigns approved mid-quarter)"
+    ],
+    "model_answer": "Q2 marketing spend came in at €63,500, €13,500 (27%) above the €50,000 budget — an unfavourable variance. The overspend was driven entirely by two unplanned digital campaigns approved by the CMO mid-quarter, which were not included in the original budget. All other line items were on-plan."
+  },
+  {
+    "id": "var_002",
+    "title": "Q2 Revenue Shortfall",
+    "context": "Sales came in below plan in Q2. You need to explain the shortfall to the board before the quarterly review.",
+    "financial_data": {
+      "type": "table",
+      "title": "Q2 Revenue — Budget vs Actual (€ thousands)",
+      "columns": ["Segment", "Budget (€k)", "Actual (€k)", "Variance (€k)"],
+      "rows": [
+        ["Enterprise", 210, 158, -52],
+        ["Mid-Market", 95, 95, 0],
+        ["SMB", 45, 45, 0],
+        ["Total", 350, 298, -52]
+      ]
+    },
+    "answer_type": "text",
+    "prompt": "In 2–3 sentences, explain the Q2 revenue variance to the board. Two enterprise deals (€26,000 each) were expected to close in June but slipped to Q3.",
+    "rubric": [
+      "Identifies the variance as unfavourable",
+      "Quantifies the gap (€52,000 or approximately 15%)",
+      "Explains the cause (two enterprise deals slipped to Q3)",
+      "Indicates this is a timing issue, not lost revenue"
+    ],
+    "model_answer": "Q2 revenue came in at €298,000, €52,000 (15%) below the €350,000 budget — an unfavourable variance driven entirely by the Enterprise segment. Two enterprise deals worth €26,000 each that were expected to close in June slipped to Q3, representing a timing issue rather than lost revenue. Mid-Market and SMB performed in line with plan."
+  },
+  {
+    "id": "var_003",
+    "title": "Full Quarter Variance Summary",
+    "context": "Quarter-end. The CFO needs a one-paragraph executive summary of Nexova's Q3 financial performance to share with the board. Review the full variance table below.",
+    "financial_data": {
+      "type": "table",
+      "title": "Nexova Ltd — Q3 Variance Summary (€ thousands)",
+      "columns": ["Line Item", "Budget (€k)", "Actual (€k)", "Variance (€k)", "Fav / Unfav"],
+      "rows": [
+        ["Revenue", 1050, 1098, 48, "Favourable"],
+        ["Personnel Costs", -420, -408, 12, "Favourable"],
+        ["Marketing", -150, -172, -22, "Unfavourable"],
+        ["Software & Tools", -45, -45, 0, "On Plan"],
+        ["Travel & Expenses", -30, -19, 11, "Favourable"],
+        ["Other OpEx", -25, -28, -3, "Unfavourable"],
+        ["EBIT", 380, 426, 46, "Favourable"]
+      ]
+    },
+    "answer_type": "text",
+    "prompt": "Write a one-paragraph executive summary of Q3 performance for the board. Cover: overall result, key drivers (positive and negative), and any items to watch.",
+    "rubric": [
+      "States the overall EBIT result and whether it was favourable or unfavourable vs budget",
+      "Identifies revenue outperformance as a positive driver",
+      "Flags marketing overspend as the main risk or negative driver",
+      "Mentions at least one favourable item (personnel or travel)",
+      "Written in professional, board-ready language"
+    ],
+    "model_answer": "Nexova delivered a strong Q3, with EBIT of €426,000 — €46,000 (12%) ahead of budget. Revenue outperformed by €48,000 driven by enterprise deal acceleration, and personnel costs came in €12,000 below plan due to two open roles not yet filled. The main area of concern was marketing, which overspent by €22,000 due to an unplanned brand campaign approved in August. Travel also underspent by €11,000 as several team offsites were postponed to Q4. Overall a positive quarter; the board should note that Q4 marketing and travel budgets may face pressure from Q3 deferrals."
+  }
+]
