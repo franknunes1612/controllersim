@@ -1,0 +1,73 @@
+[
+  {
+    "id": "budg_001",
+    "title": "Marketing Department Annual Budget",
+    "context": "You are preparing the Marketing department's FY2026 budget. Use the assumptions below to fill in each line item.",
+    "financial_data": {
+      "type": "assumptions",
+      "title": "Budget Assumptions",
+      "items": [
+        "3 marketing staff, average salary €55,000 each",
+        "4 campaign activations planned, €12,000 per campaign",
+        "Annual software licences: €8,000",
+        "Travel & entertainment: €5,000"
+      ]
+    },
+    "answer_type": "table_input",
+    "fields": [
+      {"id": "personnel", "label": "Personnel Costs (€)", "correct_answer": 165000, "tolerance_pct": 0},
+      {"id": "campaigns", "label": "Campaign Costs (€)", "correct_answer": 48000, "tolerance_pct": 0},
+      {"id": "software", "label": "Software Licences (€)", "correct_answer": 8000, "tolerance_pct": 0},
+      {"id": "travel", "label": "Travel & Entertainment (€)", "correct_answer": 5000, "tolerance_pct": 0},
+      {"id": "total", "label": "Total Budget (€)", "correct_answer": 226000, "tolerance_pct": 0}
+    ]
+  },
+  {
+    "id": "budg_002",
+    "title": "Quarterly Revenue Budget",
+    "context": "The annual revenue target for FY2026 is €4,500,000. Allocate it across quarters using the seasonal weighting factors provided.",
+    "financial_data": {
+      "type": "assumptions",
+      "title": "Seasonal Weighting",
+      "items": [
+        "Q1: 22% of annual target",
+        "Q2: 28% of annual target",
+        "Q3: 25% of annual target",
+        "Q4: 25% of annual target",
+        "Annual target: €4,500,000"
+      ]
+    },
+    "answer_type": "table_input",
+    "fields": [
+      {"id": "q1", "label": "Q1 Revenue Budget (€)", "correct_answer": 990000, "tolerance_pct": 0},
+      {"id": "q2", "label": "Q2 Revenue Budget (€)", "correct_answer": 1260000, "tolerance_pct": 0},
+      {"id": "q3", "label": "Q3 Revenue Budget (€)", "correct_answer": 1125000, "tolerance_pct": 0},
+      {"id": "q4", "label": "Q4 Revenue Budget (€)", "correct_answer": 1125000, "tolerance_pct": 0},
+      {"id": "total", "label": "Full Year Total (€)", "correct_answer": 4500000, "tolerance_pct": 0}
+    ]
+  },
+  {
+    "id": "budg_003",
+    "title": "Finance Team Headcount Budget",
+    "context": "Calculate the total people cost for the Finance team for FY2026. Remember: total cost = base salary + 20% benefits + 10% employer social contributions.",
+    "financial_data": {
+      "type": "assumptions",
+      "title": "Finance Team Headcount",
+      "items": [
+        "Business Controller: €65,000",
+        "Financial Analyst: €52,000",
+        "Finance Assistant: €38,000",
+        "FP&A Manager: €72,000",
+        "Accountant: €48,000",
+        "On-costs: 20% benefits + 10% employer social contributions on each salary"
+      ]
+    },
+    "answer_type": "table_input",
+    "fields": [
+      {"id": "base_total", "label": "Total Base Salaries (€)", "correct_answer": 275000, "tolerance_pct": 0},
+      {"id": "benefits", "label": "Benefits (20% of base) (€)", "correct_answer": 55000, "tolerance_pct": 0},
+      {"id": "social", "label": "Employer Social Contributions (10% of base) (€)", "correct_answer": 27500, "tolerance_pct": 0},
+      {"id": "total_people_cost", "label": "Total People Cost (€)", "correct_answer": 357500, "tolerance_pct": 0}
+    ]
+  }
+]

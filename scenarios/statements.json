@@ -1,0 +1,168 @@
+[
+  {
+    "id": "stmt_001",
+    "title": "Reading Nexova's Income Statement",
+    "context": "Your first week at Nexova Ltd. The CFO hands you last year's income statement and asks you to demonstrate you can read it.",
+    "financial_data": {
+      "type": "table",
+      "title": "Nexova Ltd — Income Statement FY2025 (€ thousands)",
+      "columns": ["Line Item", "Amount (€k)"],
+      "rows": [
+        ["Revenue", 4200],
+        ["Cost of Goods Sold", -1260],
+        ["Gross Profit", 2940],
+        ["Sales & Marketing", -840],
+        ["Research & Development", -630],
+        ["General & Administrative", -420],
+        ["Operating Income (EBIT)", 1050],
+        ["Interest Expense", -90],
+        ["Earnings Before Tax", 960],
+        ["Income Tax (25%)", -240],
+        ["Net Income", 720]
+      ]
+    },
+    "answer_type": "questions",
+    "questions": [
+      {
+        "id": "q1",
+        "text": "What is Nexova's gross margin? (enter as a whole number, e.g. 70 for 70%)",
+        "type": "number",
+        "unit": "%",
+        "correct_answer": 70,
+        "tolerance": 1
+      },
+      {
+        "id": "q2",
+        "text": "Which is the largest operating expense category?",
+        "type": "multiple_choice",
+        "options": ["Cost of Goods Sold", "Sales & Marketing", "Research & Development", "General & Administrative"],
+        "correct_answer": "Sales & Marketing"
+      },
+      {
+        "id": "q3",
+        "text": "What is Nexova's net profit margin? (round to nearest whole number)",
+        "type": "number",
+        "unit": "%",
+        "correct_answer": 17,
+        "tolerance": 1
+      }
+    ]
+  },
+  {
+    "id": "stmt_002",
+    "title": "Analysing the Balance Sheet",
+    "context": "The CFO wants to know if you can assess Nexova's financial health from the balance sheet.",
+    "financial_data": {
+      "type": "table",
+      "title": "Nexova Ltd — Balance Sheet FY2025 (€ thousands)",
+      "columns": ["Line Item", "Amount (€k)"],
+      "rows": [
+        ["ASSETS", ""],
+        ["Cash & Equivalents", 650],
+        ["Accounts Receivable", 380],
+        ["Prepaid Expenses", 45],
+        ["Total Current Assets", 1075],
+        ["PP&E (net)", 420],
+        ["Intangibles", 180],
+        ["Total Assets", 1675],
+        ["LIABILITIES", ""],
+        ["Accounts Payable", 145],
+        ["Accrued Expenses", 95],
+        ["Deferred Revenue", 280],
+        ["Total Current Liabilities", 520],
+        ["Long-term Debt", 450],
+        ["Total Liabilities", 970],
+        ["EQUITY", ""],
+        ["Shareholders' Equity", 705],
+        ["Total Liabilities & Equity", 1675]
+      ]
+    },
+    "answer_type": "questions",
+    "questions": [
+      {
+        "id": "q1",
+        "text": "What is Nexova's current ratio? (round to 1 decimal place, e.g. 2.1)",
+        "type": "number",
+        "unit": "",
+        "correct_answer": 2.1,
+        "tolerance": 0.1
+      },
+      {
+        "id": "q2",
+        "text": "What is Nexova's working capital? (in € thousands)",
+        "type": "number",
+        "unit": "€k",
+        "correct_answer": 555,
+        "tolerance": 5
+      },
+      {
+        "id": "q3",
+        "text": "What does a current ratio above 2.0 indicate?",
+        "type": "multiple_choice",
+        "options": [
+          "The company is over-leveraged",
+          "The company can comfortably cover short-term obligations",
+          "The company has too much inventory",
+          "The company is unprofitable"
+        ],
+        "correct_answer": "The company can comfortably cover short-term obligations"
+      }
+    ]
+  },
+  {
+    "id": "stmt_003",
+    "title": "Understanding the Cash Flow Statement",
+    "context": "Net income is not the same as cash. The CFO tests whether you understand the difference.",
+    "financial_data": {
+      "type": "table",
+      "title": "Nexova Ltd — Cash Flow Statement FY2025 (€ thousands)",
+      "columns": ["Line Item", "Amount (€k)"],
+      "rows": [
+        ["OPERATING ACTIVITIES", ""],
+        ["Net Income", 720],
+        ["Depreciation & Amortisation", 95],
+        ["Increase in Accounts Receivable", -45],
+        ["Increase in Deferred Revenue", 60],
+        ["Increase in Accounts Payable", 20],
+        ["Net Cash from Operations", 850],
+        ["INVESTING ACTIVITIES", ""],
+        ["Purchase of Equipment", -120],
+        ["Net Cash from Investing", -120],
+        ["FINANCING ACTIVITIES", ""],
+        ["Loan Repayment", -100],
+        ["Net Cash from Financing", -100],
+        ["Net Change in Cash", 630]
+      ]
+    },
+    "answer_type": "questions",
+    "questions": [
+      {
+        "id": "q1",
+        "text": "What is Nexova's free cash flow? (Operating CF minus CapEx, in € thousands)",
+        "type": "number",
+        "unit": "€k",
+        "correct_answer": 730,
+        "tolerance": 5
+      },
+      {
+        "id": "q2",
+        "text": "Why is net cash from operations (€850k) higher than net income (€720k)?",
+        "type": "multiple_choice",
+        "options": [
+          "The company recorded fictitious revenue",
+          "Non-cash charges like depreciation are added back and working capital improved",
+          "The company borrowed more money",
+          "Tax was not paid"
+        ],
+        "correct_answer": "Non-cash charges like depreciation are added back and working capital improved"
+      },
+      {
+        "id": "q3",
+        "text": "Purchasing equipment (€120k) appears under which section of the cash flow statement?",
+        "type": "multiple_choice",
+        "options": ["Operating Activities", "Investing Activities", "Financing Activities", "Equity"],
+        "correct_answer": "Investing Activities"
+      }
+    ]
+  }
+]
