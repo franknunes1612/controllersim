@@ -19,10 +19,9 @@ def record_score(progress: dict, module: str, scenario_idx: int, signal: str) ->
     """Record a scenario score. Overwrites if already scored."""
     score_value = SCORE_VALUES[signal]
     scores = progress[module]["scores"]
-    if len(scores) <= scenario_idx:
-        scores.append(score_value)
-    else:
-        scores[scenario_idx] = score_value
+    while len(scores) <= scenario_idx:
+        scores.append(0.0)
+    scores[scenario_idx] = score_value
     return progress
 
 

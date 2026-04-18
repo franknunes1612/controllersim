@@ -35,15 +35,14 @@ Respond ONLY with valid JSON in this exact format:
   "tip": "one concrete improvement suggestion"
 }}"""
 
-    message = client.messages.create(
-        model="claude-sonnet-4-6",
-        max_tokens=512,
-        messages=[{"role": "user", "content": prompt}],
-    )
-
     try:
+        message = client.messages.create(
+            model="claude-sonnet-4-6",
+            max_tokens=512,
+            messages=[{"role": "user", "content": prompt}],
+        )
         return json.loads(message.content[0].text)
-    except json.JSONDecodeError:
+    except Exception:
         return {
             "signal": "partial",
             "feedback": "Your answer was received but could not be fully evaluated. Please try again.",

@@ -71,20 +71,27 @@ def render() -> None:
     if st.button("Submit", key="fore_submit"):
         if not text_answer.strip():
             st.warning("Please write an explanation before submitting.")
-            return
-
-        with st.spinner("Evaluating your answer..."):
-            ai_result = get_ai_feedback(scenario, text_answer)
-
-        if answer_type == "hybrid":
-            number_signal, number_feedback = grade_table_input(scenario["number_fields"], number_answers)
-            final_signal = _combined_signal(number_signal, ai_result["signal"])
-            st.markdown(f"**Numbers:** {number_feedback}")
         else:
-            final_signal = ai_result["signal"]
+            with st.spinner("Evaluating your answer..."):
+                ai_result = get_ai_feedback(scenario, text_answer)
 
-        progress = record_score(progress, MODULE_KEY, scenario_idx, final_signal)
-        st.session_state.progress = progress
+            if answer_type == "hybrid":
+                number_signal, number_feedback = grade_table_input(scenario["number_fields"], number_answers)
+                final_signal = _combined_signal(number_signal, ai_result["signal"])
+                ai_result["number_feedback"] = number_feedback
+            else:
+                final_signal = ai_result["signal"]
+
+            progress = record_score(progress, MODULE_KEY, scenario_idx, final_signal)
+            st.session_state.progress = progress
+            st.session_state["fore_result"] = (final_signal, ai_result)
+            st.rerun()
+
+    stored = st.session_state.get("fore_result")
+    if stored:
+        final_signal, ai_result = stored
+        if "number_feedback" in ai_result:
+            st.markdown(f"**Numbers:** {ai_result['number_feedback']}")
 
         if final_signal == "pass":
             st.success("Pass")
@@ -99,7 +106,9 @@ def render() -> None:
         if final_signal in ("pass", "partial"):
             if st.button("Next scenario →", key="fore_next"):
                 st.session_state.fore_scenario_idx = scenario_idx + 1
+                st.session_state.pop("fore_result", None)
                 st.rerun()
         else:
             if st.button("Try again", key="fore_retry"):
+                st.session_state.pop("fore_result", None)
                 st.rerun()

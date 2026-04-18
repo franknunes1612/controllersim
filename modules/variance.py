@@ -51,15 +51,18 @@ def render() -> None:
     if st.button("Submit", key="var_submit"):
         if not answer.strip():
             st.warning("Please write an explanation before submitting.")
-            return
+        else:
+            with st.spinner("Evaluating your answer..."):
+                result = get_ai_feedback(scenario, answer)
+            signal = result["signal"]
+            progress = record_score(progress, MODULE_KEY, scenario_idx, signal)
+            st.session_state.progress = progress
+            st.session_state["var_result"] = result
+            st.rerun()
 
-        with st.spinner("Evaluating your answer..."):
-            result = get_ai_feedback(scenario, answer)
-
-        signal = result["signal"]
-        progress = record_score(progress, MODULE_KEY, scenario_idx, signal)
-        st.session_state.progress = progress
-
+    ai_result = st.session_state.get("var_result")
+    if ai_result:
+        signal = ai_result["signal"]
         if signal == "pass":
             st.success("Pass")
         elif signal == "partial":
@@ -67,13 +70,15 @@ def render() -> None:
         else:
             st.error("Not quite")
 
-        st.markdown(f"**Feedback:** {result['feedback']}")
-        st.markdown(f"**Tip:** {result['tip']}")
+        st.markdown(f"**Feedback:** {ai_result['feedback']}")
+        st.markdown(f"**Tip:** {ai_result['tip']}")
 
         if signal in ("pass", "partial"):
             if st.button("Next scenario →", key="var_next"):
                 st.session_state.var_scenario_idx = scenario_idx + 1
+                st.session_state.pop("var_result", None)
                 st.rerun()
         else:
             if st.button("Try again", key="var_retry"):
+                st.session_state.pop("var_result", None)
                 st.rerun()

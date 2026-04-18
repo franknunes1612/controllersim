@@ -59,11 +59,16 @@ def render() -> None:
     if st.button("Submit", key="stmt_submit"):
         if None in answers.values():
             st.warning("Please answer all questions before submitting.")
-            return
-        signal, feedback = grade_questions(scenario["questions"], answers)
-        progress = record_score(progress, MODULE_KEY, scenario_idx, signal)
-        st.session_state.progress = progress
+        else:
+            signal, feedback = grade_questions(scenario["questions"], answers)
+            progress = record_score(progress, MODULE_KEY, scenario_idx, signal)
+            st.session_state.progress = progress
+            st.session_state["stmt_result"] = (signal, feedback)
+            st.rerun()
 
+    result = st.session_state.get("stmt_result")
+    if result:
+        signal, feedback = result
         if signal == "pass":
             st.success(f"Pass — {feedback}")
         elif signal == "partial":
@@ -74,7 +79,9 @@ def render() -> None:
         if signal in ("pass", "partial"):
             if st.button("Next scenario →", key="stmt_next"):
                 st.session_state.stmt_scenario_idx = scenario_idx + 1
+                st.session_state.pop("stmt_result", None)
                 st.rerun()
         else:
             if st.button("Try again", key="stmt_retry"):
+                st.session_state.pop("stmt_result", None)
                 st.rerun()

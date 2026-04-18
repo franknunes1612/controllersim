@@ -53,7 +53,12 @@ def render() -> None:
         signal, feedback = grade_table_input(scenario["fields"], answers)
         progress = record_score(progress, MODULE_KEY, scenario_idx, signal)
         st.session_state.progress = progress
+        st.session_state["budg_result"] = (signal, feedback)
+        st.rerun()
 
+    result = st.session_state.get("budg_result")
+    if result:
+        signal, feedback = result
         if signal == "pass":
             st.success(f"Pass — {feedback}")
         elif signal == "partial":
@@ -64,7 +69,9 @@ def render() -> None:
         if signal in ("pass", "partial"):
             if st.button("Next scenario →", key="budg_next"):
                 st.session_state.budg_scenario_idx = scenario_idx + 1
+                st.session_state.pop("budg_result", None)
                 st.rerun()
         else:
             if st.button("Try again", key="budg_retry"):
+                st.session_state.pop("budg_result", None)
                 st.rerun()
