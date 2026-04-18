@@ -36,7 +36,37 @@ with st.sidebar:
     score = get_readiness_score(progress)
     st.metric("Controller Readiness", f"{score}/100")
 
+    st.markdown("---")
+    demo_mode = st.toggle("Demo Mode", value=False, help="Shows a completed scenario — useful for sharing with recruiters.")
+    st.session_state.demo_mode = demo_mode
+
 # --- Page routing ---
+# Demo mode overlay — overrides all pages when toggled on
+if st.session_state.get("demo_mode", False):
+    st.info("**Demo Mode** — This shows a completed scenario so recruiters can see the full experience.")
+    st.markdown("---")
+    st.subheader("Demo: Variance Analysis — Q2 Marketing Overspend")
+    st.markdown("""
+**Context:** Your CFO asks you to explain why marketing overspent in Q2.
+
+| Line Item | Budget (€) | Actual (€) | Variance (€) |
+|-----------|-----------|-----------|-------------|
+| Digital Campaigns | 24,000 | 37,500 | -13,500 |
+| Events | 14,000 | 14,000 | 0 |
+| Software Tools | 8,000 | 8,000 | 0 |
+| Travel | 4,000 | 4,000 | 0 |
+| **Total** | **50,000** | **63,500** | **-13,500** |
+
+**Student answer:** Q2 marketing spend came in at €63,500, €13,500 (27%) above the €50,000 budget — an unfavourable variance. The overspend was driven by two unplanned digital campaigns approved by the CMO mid-quarter.
+
+**AI Feedback:** Excellent explanation. You correctly identified the variance as unfavourable, quantified the gap in both absolute and percentage terms, and clearly explained the root cause. This is exactly what a CFO wants to see.
+
+**Tip:** In future, you could also note which specific budget line drove the overspend (Digital Campaigns) for added precision.
+
+**Result:** ✅ Pass
+    """)
+    st.stop()
+
 if page == "Home":
     st.title("Welcome to ControllerSim")
     st.markdown("""
